@@ -2,9 +2,11 @@ import os, zipfile, shutil
 from tkinter.filedialog import *
 import tkinter.messagebox as tm
 
-tm.showinfo("BüroSetup 17", "Vielen Dank, dass Sie sich für Büro entschieden haben.\nSie starten BüroSetup Version 17!")
+__version__ = "18.0"
 
-pfad1 = askopenfilename(title="Zip-Datei mit Büro auswählen", filetypes=[("ZIP comprimized folder", "*.zip")])
+tm.showinfo("BueroSetup 18", "Vielen Dank, dass Sie sich für BueroOS entschieden haben.\nSie starten BueroSetup Version 18!")
+
+pfad1 = askopenfilename(title="Zip-Datei mit Buero auswählen", filetypes=[("ZIP comprimized folder", "*.zip")])
 pfad2 = askopenfilename(title="Zip-Datei mit System auswählen", filetypes=[("ZIP comprimized folder", "*.zip")])
 pfad3 = askopenfilename(title="Zip-Datei mit Hintergrundsystem auswählen", filetypes=[("ZIP comprimized folder", "*.zip")])
 
@@ -35,7 +37,7 @@ with open("./programdata/buero/versioninfo.txt", "x") as f:
     pfad1_ = pfad1.split("/")[-1]
     f.write(pfad1_[pfad1_.find("büro")+4:-1].rstrip(".zip"))
 with open("./programdata/buero/versioninfo_System.txt", "x") as f:
-    f.write(pfad2[pfad2.find("system")+5:-1].rstrip(".zip"))
+    f.write(pfad2[pfad2.find("system")+6:-1].rstrip(".zip"))
 with open("./programdata/buero/PIN_opt.txt", "x") as f:
     f.write("False")
 with open("./programdata/buero/PIN_l.txt", "x") as f:
@@ -59,7 +61,7 @@ for i in os.listdir("./programdata/update"):
     else:
         shutil.move("./programdata/update/"+i, "./programdata/ads/"+i)
 
-if tm.askokcancel("Büro", "Soll versucht werden, Büro zu öffnen?"):
+if tm.askokcancel("Buero", "Soll versucht werden, Buero zu öffnen?"):
     os.system("py ./büro.py")
     if tm.askokcancel("Fehlerbehebung", "Falls Fehler aufgetreten sind:\nSoll die Fehleranalyse gestartet werden?"):
         os.system("pyt ./fehleranalyse.py")
